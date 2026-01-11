@@ -2,10 +2,15 @@ package frc.robot.subsystems;
 
 import static edu.wpi.first.units.Units.Amps;
 
+import java.lang.constant.ConstantDescs;
+
 import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
+import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.MotorAlignmentValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -21,6 +26,8 @@ public class IntakeSubsystem extends SubsystemBase {
     TalonFX intakeWheel;
 
     Encoder rotationEncoder;
+
+    final MotionMagicVoltage m_request = new MotionMagicVoltage(0);
     
     public IntakeSubsystem() {
         intakeRotationLeader = new TalonFX(Constants.IntakeConstants.kIntakeRotationLeaderPort);
@@ -31,7 +38,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
         var intakeRotationConfig = new TalonFXConfiguration();
         var intakeWheelConfig = new TalonFXConfiguration();
-
+        
         // Set Brake Mode and Current Limits
         intakeRotationConfig
             .withMotorOutput(
@@ -44,8 +51,23 @@ public class IntakeSubsystem extends SubsystemBase {
                     .withStatorCurrentLimitEnable(true)
                     .withSupplyCurrentLimit(Amps.of(Constants.IntakeConstants.kSupplyCurrentLimit))
                     .withSupplyCurrentLimitEnable(true)
-            );
-
+            )
+            .withSlot0(
+                new Slot0Configs()
+                    .withKS(Constants.IntakeConstants.kS)
+                    .withKV(Constants.IntakeConstants.kV)
+                    .withKA(Constants.IntakeConstants.kA)
+                    .withKP(Constants.IntakeConstants.kP)
+                    .withKI(Constants.IntakeConstants.kI)
+                    .withKD(Constants.IntakeConstants.kD)
+                )
+            .withMotionMagic(
+                new MotionMagicConfigs()
+                    .withMotionMagicAcceleration(Constants.IntakeConstants.acceleration)
+                    .withMotionMagicCruiseVelocity(Constants.IntakeConstants.velocity)
+                )
+            ;
+        
         intakeWheelConfig
             .withMotorOutput(
                 new MotorOutputConfigs()
@@ -85,6 +107,10 @@ public class IntakeSubsystem extends SubsystemBase {
 
     public Encoder getEncoder() {
         return rotationEncoder;
+    }
+
+    public void setIntakePosition(int encoderTicks){
+        intakeRotationLeader.setControl(m_request.withPosition(100));
     }
 
     @Override
