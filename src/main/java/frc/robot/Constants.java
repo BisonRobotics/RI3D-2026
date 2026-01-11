@@ -19,6 +19,18 @@ public class Constants
         public static final double kStickDeadband = 0.1;
     }
 
+    public static final class FeederConstants{
+        //Motor port
+        public static final int kFeederPort = 1;
+        
+        // Speed Constant
+        public static final double kFeederSpeed = 0.1;
+
+        // Current limits
+        public static final Current kFeederMotorStatorCurrentLimit = Amps.of(120);
+        public static final Current kFeederMotorSupplyCurrentLimit = Amps.of(40);
+    }
+
     public static final class JointConstants 
     {
         // Motor & Can
