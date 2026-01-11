@@ -16,8 +16,8 @@ public class Constants
     {
         public static final int kLeftLeaderPort = 2;
         public static final int kLeftFollowerPort = 3;
-        public static final int kRightLeaderPort = 9;
-        public static final int kRightFollowerPort = 4;
+        public static final int kRightLeaderPort = 4;
+        public static final int kRightFollowerPort = 5;
         public static final double kStickDeadband = 0.1;
     }
     
@@ -44,7 +44,7 @@ public class Constants
 
     public static final class FeederConstants{
         //Motor port
-        public static final int kFeederPort = 1;
+        public static final int kFeederPort = 9;
         
         // Speed Constant
         public static final double kFeederSpeed = 0.1;
