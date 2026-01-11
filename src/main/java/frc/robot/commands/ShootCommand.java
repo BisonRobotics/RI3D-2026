@@ -1,8 +1,10 @@
 package frc.robot.commands;
 
 import static frc.robot.Constants.ShooterConstants.kShootCloseSpeed;
+import static frc.robot.Constants.FeederConstants.kFeederSpeed;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 
@@ -25,13 +27,17 @@ public class ShootCommand extends Command{
     @Override
     public void execute() {
         if(m_ShooterSubsystem.AtVelocity()) {
-
+            m_FeederSubsystem.setFeederSpeed(kFeederSpeed);
+        }
+        else {
+            m_FeederSubsystem.Stop();
         }
     }
 
     @Override
     public void end(boolean interrupted) {
         m_ShooterSubsystem.Stop();
+        m_FeederSubsystem.Stop();
     }
 
     @Override
