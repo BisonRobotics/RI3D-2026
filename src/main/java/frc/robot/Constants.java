@@ -13,7 +13,8 @@ public class Constants {
 
     public static final class IntakeConstants {
         // Port Constants
-        public static final int kIntakeRotationPort = 0;
+        public static final int kIntakeRotationLeaderPort = 0;
+        public static final int kIntakeRotationFollowerPort = 0;
         public static final int kIntakeWheelPort = 0;
         public static final int kIntakeRotationEncoderChannelA = 0;
         public static final int kIntakeRotationEncoderChannelB = 0;
@@ -22,5 +23,13 @@ public class Constants {
         public static final int kSupplyCurrentLimit = 60;
         public static final int kIntakeRotationStatorCurrentLimit = 120;
         public static final int kIntakeRotationWheelStatorCurrentLimit = 120;
+
+        // Encoder Positions
+        public static final int kEncoderHomePosition = 0;
+        public static final int kEncoderOutPosition = 0;
+
+        // Speed Constants
+        public static final double kRotationSpeed = 0.5;
+        public static final double kWheelSpeed = 0.5;
     }
 }
