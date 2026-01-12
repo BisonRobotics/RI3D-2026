@@ -104,7 +104,7 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void setIntakePosition(int encoderTicks){
-        intakeRotationLeader.setControl(m_request.withPosition(100));
+        intakeRotationLeader.setControl(m_request.withPosition(encoderTicks));
     }
 
     @Override
