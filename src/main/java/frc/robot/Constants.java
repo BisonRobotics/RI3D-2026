@@ -43,7 +43,7 @@ public class Constants {
         public static final int kFeederPort = 9;
         
         // Speed Constant
-        public static final double kFeederSpeed = 0.2;
+        public static final double kFeederSpeed = 0.1;
 
         // Current limits
         public static final Current kFeederMotorStatorCurrentLimit = Amps.of(120);
@@ -58,7 +58,7 @@ public class Constants {
         public static final int kClimbSupplyCurrentLimit = 60;
 
         // climb motor run speed
-        public static final double kClimbSpeed = .2;
+        public static final double kClimbSpeed = .1;
 
         // motor soft limits
         public static final int kClimbUpperLimit = 0;
@@ -80,7 +80,7 @@ public class Constants {
 
         // Encoder Positions
         public static final int kEncoderHomePosition = 0;
-        public static final int kEncoderOutPosition = 100;
+        public static final int kEncoderOutPosition = 0;
 
         // Speed Constants
         public static final double kRotationSpeed = 0.02;
