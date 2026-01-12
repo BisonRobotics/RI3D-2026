@@ -47,7 +47,7 @@ public class Constants {
         public static final int kFeederPort = 9;
         
         // Speed Constant
-        public static final double kFeederSpeed = 0.1;
+        public static final double kFeederSpeed = 0.5;
 
         // Current limits
         public static final Current kFeederMotorStatorCurrentLimit = Amps.of(120);
